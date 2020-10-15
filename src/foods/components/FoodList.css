@@ -1,0 +1,15 @@
+.mt--30 {
+    margin-top: 30px;
+}
+
+.food-list {
+    list-style: none;
+    margin: 1rem auto;
+    padding: 0;
+    width: 90%;
+    max-width: 40rem;
+}
+
+.mt--60 {
+    margin-top: 60px;
+}

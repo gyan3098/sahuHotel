@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 
-function App() {
+// import FoodItem from "./foods/components/FoodItem";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CartItem from "./foods/pages/CartItem";
+import OrderItem from "./foods/pages/OrderItem";
+import ListOfFoods from "./foods/pages/ListOfFoods";
+import MainNavigation from "./shared/components/Navigation/MainNavigation";
+import Auth from "./user/pages/Auth"
+import "./App.css";
+
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <MainNavigation />
+      <Switch>
+        <Route path="/" exact>
+          <ListOfFoods />
+        </Route>
+        <Route path="/cart" exact>
+          <CartItem />
+        </Route>
+        <Route path="/:mbId/orders" exact>
+          <OrderItem />
+        </Route>
+        <Route path="/auth" exact>
+          <Auth />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
